@@ -9,7 +9,7 @@ class TimerSelect extends React.Component{
         {this.props.timerArray.map((time, i) => {
           return(
             <Button
-              containerStyle={this.props.isSelected ? styles.buttonActive : styles.button}
+              containerStyle={this.props.timer === null ? styles.buttonActive : styles.button}
               style={styles.inner}
               onPress={() => this.props.selectTimer(time)}
               key={i}>
@@ -29,13 +29,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     width: '90%',
     height: '20%',
-    backgroundColor: 'transparent',
     justifyContent: 'center'
   },
   button: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
+    justifyContent: 'center',
     width: '20%',
     borderRadius: 10,
     height: '50%',
@@ -48,6 +45,7 @@ const styles = StyleSheet.create({
     borderColor: '#FF9900'
   },
   inner: {
-    color: 'white'
+    color: 'white',
+    fontSize: 30,
   }
 });

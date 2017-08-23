@@ -7,8 +7,8 @@ class MusicSelect extends React.Component{
     return(
       <View style={styles.container}>
         <Button
-          containerStyle={this.props.music ? styles.buttonActive : styles.button}
-          style={styles.inner}
+          containerStyle={this.props.music === true ? styles.buttonActive : styles.button}
+          style={styles.inner === true ? styles.innerActive : styles.inner}
           onPress={() => this.props.selectMusic()}>
           Music
         </Button>
@@ -24,15 +24,27 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    width: '50%',
+    justifyContent: 'center',
+    width: 100,
     borderRadius: 10,
     height: '80%',
     margin: '2.5%',
     borderColor: 'white',
     borderWidth: 2,
-    backgroundColor: 'transparent',
+    backgroundColor: 'transparent'
   },
   buttonActive: {
+    backgroundColor: 'white',
     borderColor: '#FF9900'
   },
+  inner: {
+    alignItems: 'center',
+    fontSize: 30,
+    color: 'white'
+  },
+  innerActive: {
+    alignItems: 'center',
+    fontSize: 30,
+    color: '#FF9900'
+  }
 });

@@ -1,11 +1,24 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Button from 'react-native-button';
-import TimerSelect from './components/TimerSelect';
-import OptionSelect from './components/OptionSelect';
-import TimerStart from './components/TimerStart';
+import { StackNavigator } from 'react-navigation';
+
+// import TimerSelect from './components/TimerSelect';
+// import OptionSelect from './components/OptionSelect';
+// import TimerStart from './components/TimerStart';
+import HomeScreen from './screens/HomeScreen';
+import TimerScreen from './screens/TimerScreen';
 
 const timerArray = [2,5,10,20]
+
+const Stack = StackNavigator({
+  Home: {
+    screen: HomeScreen
+  },
+  Timer: {
+    screen: TimerScreen
+  }
+})
 
 export default class App extends React.Component {
 
@@ -24,7 +37,9 @@ export default class App extends React.Component {
     console.log('starting timer');
     this.countdownTimer()
     console.log(this.state);
+    // this.props.navigation.navigate('Timer', { ...this.state });
   }
+
   selectTimer = (selection) => {
     const timer = selection*60;
     this.setState({
@@ -43,17 +58,21 @@ export default class App extends React.Component {
       this.setState({ chime: true })
     }
   }
-  selectMusic= () => {
+  selectMusic = () => {
     this.setState({ music: true })
+    console.log(this.state);
   }
 
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.text}>Session Length</Text>
-        <TimerSelect timerArray={timerArray} selectTimer={this.selectTimer} />
-        <OptionSelect selectChime={this.selectChime} selectMusic={this.selectMusic} />
-        <TimerStart startTimer={this.startTimer} />
+        <HomeScreen
+          timerArray={timerArray}
+          selectTimer={this.selectTimer}
+          selectChime={this.selectChime}
+          selectMusic={this.selectMusic}
+          startTimer={this.startTimer}
+        />
       </View>
     );
   }

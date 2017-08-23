@@ -21,18 +21,24 @@ export default ChimeSelect;
 
 const styles = StyleSheet.create({
   button: {
-    // display: 'flex',
-    // flexDirection: 'column',
+    display: 'flex',
+    flexDirection: 'column',
     alignItems: 'center',
-    width: 50,
+    justifyContent: 'center',
+    width: 100,
     borderRadius: 10,
     height: '80%',
     margin: '2.5%',
     borderColor: 'white',
     borderWidth: 2,
-    backgroundColor: 'transparent',
+    backgroundColor: 'transparent'
   },
   buttonActive: {
     borderColor: '#FF9900'
   },
+  inner: {
+    alignItems: 'center',
+    fontSize: 30,
+    color: 'white'
+  }
 });
